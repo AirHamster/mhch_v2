@@ -8,5 +8,6 @@ void timer2_setup(uint8_t prescaler, uint16_t top);
 void timer2_start(void);
 void timer1_start(void);
 void timer1_capture1(void);
+void timer2_compare3 (void);
 
 

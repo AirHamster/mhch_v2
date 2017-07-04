@@ -1,6 +1,15 @@
 /*	BASIC INTERRUPT VECTOR TABLE FOR STM8 devices
  *	Copyright (c) 2007 STMicroelectronics
- */
+ */ 
+ #include "stm8s.h"
+ #include "iostm8s103.h"
+
+//#include "sources/usart.h"
+extern void UART_Resieved(void);
+extern void Timer1_overflow(void);
+extern void timer1_compare(void);
+extern void timer2_overflow (void);
+extern void timer2_compare3(void);
 
 typedef void @far (*interrupt_handler_t)(void);
 
@@ -18,7 +27,22 @@ struct interrupt_vector {
 }
 
 extern void _stext();     /* startup routine */
-
+@far @interrupt void timer2_compare_handler (void)
+{
+	timer2_compare3();
+	}
+	@far @interrupt void UART_Resieved_Handler (void)
+{	
+		//temp = UART1_DR;
+		UART_Resieved();
+	
+	return;
+}
+@far @interrupt void timer2_overflow_handler (void)
+{
+	timer2_overflow();
+	return;
+}
 struct interrupt_vector const _vectab[] = {
 	{0x82, (interrupt_handler_t)_stext}, /* reset */
 	{0x82, NonHandledInterrupt}, /* trap  */
@@ -35,12 +59,12 @@ struct interrupt_vector const _vectab[] = {
 	{0x82, NonHandledInterrupt}, /* irq10 */
 	{0x82, NonHandledInterrupt}, /* irq11 */
 	{0x82, NonHandledInterrupt}, /* irq12 */
-	{0x82, NonHandledInterrupt}, /* irq13 */
-	{0x82, NonHandledInterrupt}, /* irq14 */
+	{0x82, timer2_overflow_handler}, /* irq13 */
+	{0x82, timer2_compare_handler}, /* irq14 */
 	{0x82, NonHandledInterrupt}, /* irq15 */
 	{0x82, NonHandledInterrupt}, /* irq16 */
 	{0x82, NonHandledInterrupt}, /* irq17 */
-	{0x82, NonHandledInterrupt}, /* irq18 */
+	{0x82, UART_Resieved_Handler}, /* irq18 */
 	{0x82, NonHandledInterrupt}, /* irq19 */
 	{0x82, NonHandledInterrupt}, /* irq20 */
 	{0x82, NonHandledInterrupt}, /* irq21 */
