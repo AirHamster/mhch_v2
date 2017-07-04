@@ -9,8 +9,11 @@ const char help_msg[] = "Plazma probe controller\n Usage:\n    start - start mea
 
 void usart_setup(void)
 {
-	UART1_BRR1=0x68;     //9600 bod
-	UART1_BRR2=0x03;
+	//UART1_BRR1=0x68;     //9600 bod
+	//UART1_BRR2=0x03;
+	UART1_BRR2 = 0x05;
+	UART1_BRR1 = 0x04;     //9600 bod
+	
 	UART1_CR2 |= UART1_CR2_REN; //reseiving
 	UART1_CR2 |= UART1_CR2_TEN; //transmiting 
 	UART1_CR2 |= UART1_CR2_RIEN; //reseive int
