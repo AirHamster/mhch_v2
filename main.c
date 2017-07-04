@@ -24,6 +24,9 @@ main()
 		PA_CR2 = 1 << 3;
 		PA_DDR = 1<<3;
 		PA_ODR = 1<<3;
+		
+		PC_CR1 = 1 << 6;
+		
 //	Watchdog setup =============
 	/*	Later
 		IWDG_KR = KEY_ACCESS;         //  Allow the IWDG registers to be programmed.

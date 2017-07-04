@@ -7,7 +7,7 @@
 //#include "sources/usart.h"
 extern void UART_Resieved(void);
 extern void Timer1_overflow(void);
-extern void timer1_compare(void);
+extern void timer1_capture1(void);
 extern void timer2_overflow (void);
 extern void timer2_compare3(void);
 
@@ -43,6 +43,11 @@ extern void _stext();     /* startup routine */
 	timer2_overflow();
 	return;
 }
+@far @interrupt void timer1_capture1_handler (void)
+{
+	timer1_capture1();
+	return;
+}
 struct interrupt_vector const _vectab[] = {
 	{0x82, (interrupt_handler_t)_stext}, /* reset */
 	{0x82, NonHandledInterrupt}, /* trap  */
@@ -58,7 +63,7 @@ struct interrupt_vector const _vectab[] = {
 	{0x82, NonHandledInterrupt}, /* irq9  */
 	{0x82, NonHandledInterrupt}, /* irq10 */
 	{0x82, NonHandledInterrupt}, /* irq11 */
-	{0x82, NonHandledInterrupt}, /* irq12 */
+	{0x82, timer1_capture1_handler}, /* irq12 */
 	{0x82, timer2_overflow_handler}, /* irq13 */
 	{0x82, timer2_compare_handler}, /* irq14 */
 	{0x82, NonHandledInterrupt}, /* irq15 */
