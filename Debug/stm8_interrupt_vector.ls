@@ -1,14 +1,14 @@
    1                     ; C Compiler for STM8 (COSMIC Software)
    2                     ; Parser V4.10.2 - 02 Nov 2011
    3                     ; Generator (Limited) V4.3.7 - 29 Nov 2011
-2201                     ; 22 @far @interrupt void NonHandledInterrupt (void)
-2201                     ; 23 {
+2201                     ; 23 @far @interrupt void NonHandledInterrupt (void)
+2201                     ; 24 {
 2202                     	switch	.text
 2203  0000               f_NonHandledInterrupt:
-2207                     ; 27 	return;
+2207                     ; 28 	return;
 2210  0000 80            	iret
-2234                     ; 31 @far @interrupt void timer2_compare_handler (void)
-2234                     ; 32 {
+2234                     ; 32 @far @interrupt void timer2_compare_handler (void)
+2234                     ; 33 {
 2235                     	switch	.text
 2236  0001               f_timer2_compare_handler:
 2238  0001 8a            	push	cc
@@ -22,9 +22,9 @@
 2246  000d 3b0002        	push	c_y+2
 2247  0010 be00          	ldw	x,c_y
 2248  0012 89            	pushw	x
-2251                     ; 33 	timer2_compare3();
+2251                     ; 34 	timer2_compare3();
 2253  0013 cd0000        	call	_timer2_compare3
-2255                     ; 34 	}
+2255                     ; 35 	}
 2258  0016 85            	popw	x
 2259  0017 bf00          	ldw	c_y,x
 2260  0019 320002        	pop	c_y+2
@@ -32,8 +32,8 @@
 2262  001d bf00          	ldw	c_x,x
 2263  001f 320002        	pop	c_x+2
 2264  0022 80            	iret
-2288                     ; 35 	@far @interrupt void UART_Resieved_Handler (void)
-2288                     ; 36 {	
+2288                     ; 36 	@far @interrupt void UART_Resieved_Handler (void)
+2288                     ; 37 {	
 2289                     	switch	.text
 2290  0023               f_UART_Resieved_Handler:
 2292  0023 8a            	push	cc
@@ -47,9 +47,9 @@
 2300  002f 3b0002        	push	c_y+2
 2301  0032 be00          	ldw	x,c_y
 2302  0034 89            	pushw	x
-2305                     ; 38 		UART_Resieved();
+2305                     ; 39 		UART_Resieved();
 2307  0035 cd0000        	call	_UART_Resieved
-2309                     ; 40 	return;
+2309                     ; 41 	return;
 2312  0038 85            	popw	x
 2313  0039 bf00          	ldw	c_y,x
 2314  003b 320002        	pop	c_y+2
@@ -57,8 +57,8 @@
 2316  003f bf00          	ldw	c_x,x
 2317  0041 320002        	pop	c_x+2
 2318  0044 80            	iret
-2342                     ; 42 @far @interrupt void timer2_overflow_handler (void)
-2342                     ; 43 {
+2342                     ; 43 @far @interrupt void timer2_overflow_handler (void)
+2342                     ; 44 {
 2343                     	switch	.text
 2344  0045               f_timer2_overflow_handler:
 2346  0045 8a            	push	cc
@@ -72,9 +72,9 @@
 2354  0051 3b0002        	push	c_y+2
 2355  0054 be00          	ldw	x,c_y
 2356  0056 89            	pushw	x
-2359                     ; 44 	timer2_overflow();
+2359                     ; 45 	timer2_overflow();
 2361  0057 cd0000        	call	_timer2_overflow
-2363                     ; 45 	return;
+2363                     ; 46 	return;
 2366  005a 85            	popw	x
 2367  005b bf00          	ldw	c_y,x
 2368  005d 320002        	pop	c_y+2
@@ -82,8 +82,8 @@
 2370  0061 bf00          	ldw	c_x,x
 2371  0063 320002        	pop	c_x+2
 2372  0066 80            	iret
-2396                     ; 47 @far @interrupt void timer1_capture1_handler (void)
-2396                     ; 48 {
+2396                     ; 48 @far @interrupt void timer1_capture1_handler (void)
+2396                     ; 49 {
 2397                     	switch	.text
 2398  0067               f_timer1_capture1_handler:
 2400  0067 8a            	push	cc
@@ -97,9 +97,9 @@
 2408  0073 3b0002        	push	c_y+2
 2409  0076 be00          	ldw	x,c_y
 2410  0078 89            	pushw	x
-2413                     ; 49 	timer1_capture1();
+2413                     ; 50 	timer1_capture1();
 2415  0079 cd0000        	call	_timer1_capture1
-2417                     ; 50 	return;
+2417                     ; 51 	return;
 2420  007c 85            	popw	x
 2421  007d bf00          	ldw	c_y,x
 2422  007f 320002        	pop	c_y+2
@@ -107,8 +107,8 @@
 2424  0083 bf00          	ldw	c_x,x
 2425  0085 320002        	pop	c_x+2
 2426  0088 80            	iret
-2450                     ; 52 @far @interrupt void timer1_trigger_handler (void)
-2450                     ; 53 {
+2450                     ; 53 @far @interrupt void timer1_trigger_handler (void)
+2450                     ; 54 {
 2451                     	switch	.text
 2452  0089               f_timer1_trigger_handler:
 2454  0089 8a            	push	cc
@@ -122,9 +122,9 @@
 2462  0095 3b0002        	push	c_y+2
 2463  0098 be00          	ldw	x,c_y
 2464  009a 89            	pushw	x
-2467                     ; 54 	timer1_trigger();
+2467                     ; 55 	timer1_trigger();
 2469  009b cd0000        	call	_timer1_trigger
-2471                     ; 55 	return;
+2471                     ; 56 	return;
 2474  009e 85            	popw	x
 2475  009f bf00          	ldw	c_y,x
 2476  00a1 320002        	pop	c_y+2

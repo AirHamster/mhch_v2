@@ -8,6 +8,7 @@
 extern void UART_Resieved(void);
 extern void Timer1_overflow(void);
 extern void timer1_capture1(void);
+extern void timer1_capture2(void);
 extern void timer1_trigger(void);
 extern void timer2_overflow (void);
 extern void timer2_compare3(void);
