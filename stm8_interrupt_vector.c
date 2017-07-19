@@ -4,7 +4,7 @@
  #include "stm8s.h"
  #include "iostm8s103.h"
 
-//#include "sources/usart.h"
+
 extern void UART_Resieved(void);
 extern void Timer1_overflow(void);
 extern void timer1_capture1(void);
@@ -12,7 +12,11 @@ extern void timer1_capture2(void);
 extern void timer1_trigger(void);
 extern void timer2_overflow (void);
 extern void timer2_compare3(void);
-
+extern void timer4_overflow(void);
+extern void tim4_start(uint16_t cycles);
+extern void portc_event(void);
+extern void portd_event(void);
+extern uint8_t buttons_status;
 typedef void @far (*interrupt_handler_t)(void);
 
 struct interrupt_vector {
@@ -56,6 +60,24 @@ extern void _stext();     /* startup routine */
 	return;
 }
 
+@far @interrupt void portd_int (void)
+{
+	EXTI_CR1 = (EXTI_CR1 & 0x3f) | (~EXTI_CR1 & 0xcf);
+	portd_event();
+	return;
+}
+
+@far @interrupt void portc_int (void)
+{
+
+	EXTI_CR1 = (EXTI_CR1 & 0xcf) | (~EXTI_CR1 & 0x3f);
+	portc_event();
+	return;
+}
+@far @interrupt void tim4_overflow_handler (void)
+{
+	timer4_overflow();
+}
 struct interrupt_vector const _vectab[] = {
 	{0x82, (interrupt_handler_t)_stext}, /* reset */
 	{0x82, NonHandledInterrupt}, /* trap  */
@@ -64,8 +86,8 @@ struct interrupt_vector const _vectab[] = {
 	{0x82, NonHandledInterrupt}, /* irq2  */
 	{0x82, NonHandledInterrupt}, /* irq3  */
 	{0x82, NonHandledInterrupt}, /* irq4  */
-	{0x82, NonHandledInterrupt}, /* irq5  */
-	{0x82, NonHandledInterrupt}, /* irq6  */
+	{0x82, portc_int}, /* irq5  */
+	{0x82, portd_int}, /* irq6  */
 	{0x82, NonHandledInterrupt}, /* irq7  */
 	{0x82, NonHandledInterrupt}, /* irq8  */
 	{0x82, NonHandledInterrupt}, /* irq9  */
@@ -82,7 +104,7 @@ struct interrupt_vector const _vectab[] = {
 	{0x82, NonHandledInterrupt}, /* irq20 */
 	{0x82, NonHandledInterrupt}, /* irq21 */
 	{0x82, NonHandledInterrupt}, /* irq22 */
-	{0x82, NonHandledInterrupt}, /* irq23 */
+	{0x82, tim4_overflow_handler}, /* irq23 */
 	{0x82, NonHandledInterrupt}, /* irq24 */
 	{0x82, NonHandledInterrupt}, /* irq25 */
 	{0x82, NonHandledInterrupt}, /* irq26 */

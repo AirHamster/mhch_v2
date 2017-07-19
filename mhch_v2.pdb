@@ -3,12 +3,12 @@ DumpRWOnFly1=0
 DumpRWOnFly2=0
 DumpRWOnFly3=0
 DumpRWOnFly4=0
-WatchVariables1=result!0;timval!0;step!0;usart_counter!0;
+WatchVariables1=result!0;timval!0;step!0;usart_counter!0;width!0;buttons_status!0;divider!0;in_pwm!0;med_in_val!0;med_val!0;val!0;
 FormatWatch1=0
 FormatViewType1=1
 FormatViewAddress1=1
 WatchRWOnFlyTab1=0
-WatchVariables2=
+WatchVariables2=top_val!0;bot_val!0;top_in_val!0;bot_in_val!0;med_in_val!0;
 FormatWatch2=0
 FormatViewType2=1
 FormatViewAddress2=1
@@ -28,7 +28,7 @@ FormatParameters=0
 [DebugState_v1-Debug.AddOn.St7Registers]
 ActiveTab=2
 [DebugState_v1-Debug.AddOn.St7PeripheralRegister]
-DisplayFormat=2
+DisplayFormat=3
 ShowPeriphAddress=0
 ShowRegisterAddress=1
 [DebugState_v1-Debug.AddOn.St7McuIcdConf]

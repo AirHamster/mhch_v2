@@ -301,16 +301,16 @@ Next=Root.Source Files.sources\keys.c
 [Root.Source Files.sources\keys.c]
 ElemType=File
 PathName=sources\keys.c
-Next=Root.Source Files.sources\timers.c
-
-[Root.Source Files.sources\timers.c]
-ElemType=File
-PathName=sources\timers.c
 Next=Root.Source Files.stm8_interrupt_vector.c
 
 [Root.Source Files.stm8_interrupt_vector.c]
 ElemType=File
 PathName=stm8_interrupt_vector.c
+Next=Root.Source Files.timers.c
+
+[Root.Source Files.timers.c]
+ElemType=File
+PathName=timers.c
 Next=Root.Source Files.usart.c
 
 [Root.Source Files.usart.c]
